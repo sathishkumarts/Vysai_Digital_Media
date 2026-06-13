@@ -113,9 +113,7 @@ export function Navbar() {
               Packages
             </a>
             <a
-              href="https://wa.me/919894620389?text=Hi%20Vysai%20Digital%20Media!%20I'd%20like%20to%20get%20a%20free%20consultation%20and%20discuss%20growing%20my%20business."
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               className="inline-block"
             >
               <MagneticButton className="px-5 py-2 text-xs">Let's talk</MagneticButton>
@@ -194,9 +192,7 @@ export function Navbar() {
                   View Packages
                 </a>
                 <a
-                  href="https://wa.me/919894620389?text=Hi%20Vysai%20Digital%20Media!%20I'd%20like%20to%20get%20a%20free%20consultation%20and%20discuss%20growing%20my%20business."
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#contact"
                   onClick={closeMenu}
                   className="flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-medium text-[color:var(--primary-foreground)] transition-all duration-300 hover:opacity-90 active:scale-[0.98]"
                   style={{ background: "var(--gradient-gold)", boxShadow: "var(--shadow-gold)" }}

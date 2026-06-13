@@ -148,9 +148,7 @@ export function AntiGravityHero() {
             className="mt-10 flex flex-wrap items-center gap-4"
           >
             <a
-              href="https://wa.me/919894620389?text=Hi%20Vysai%20Digital%20Media!%20I'd%20like%20to%20get%20a%20free%20consultation%20and%20discuss%20growing%20my%20business."
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
             >
               <MagneticButton>
                 Get Free Consultation <ArrowUpRight size={16} />
