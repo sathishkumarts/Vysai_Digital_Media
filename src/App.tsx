@@ -10,6 +10,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { Packages } from "@/components/Packages";
+import { LeadForm } from "@/components/LeadForm";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { GoldenDust } from "@/components/GoldenDust";
@@ -31,6 +32,7 @@ export default function App() {
       <Testimonials />
       <FAQ />
       <Packages />
+      <LeadForm />
       <Footer />
     </main>
   );

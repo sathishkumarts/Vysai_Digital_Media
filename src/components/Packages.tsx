@@ -214,7 +214,7 @@ export function Packages() {
                   {/* CTA */}
                   <div className="mt-8">
                     <a
-                      href="#contact"
+                      href={`#contact-${pkg.id}`}
                       className={`group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl px-6 py-3.5 text-sm font-medium transition-all duration-500 ${
                         isFeatured
                           ? "bg-[image:var(--gradient-gold)] text-[color:var(--primary-foreground)] shadow-[0_0_30px_-6px_var(--gold)] hover:shadow-[0_0_50px_-4px_var(--gold)]"
