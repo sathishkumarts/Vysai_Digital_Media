@@ -40,13 +40,13 @@ function CtaStrip() {
           business in{" "}
           <span
             className="relative inline-block overflow-hidden align-bottom"
-            style={{ height: "1.05em", minWidth: "8ch", verticalAlign: "bottom" }}
+            style={{ height: "1.25em", minWidth: "12ch", verticalAlign: "bottom" }}
           >
             <AnimatePresence mode="wait">
               <motion.span
                 key={cityIdx}
                 className="gold-text font-display italic font-light absolute left-0 bottom-0 whitespace-nowrap"
-                style={{ backgroundImage: "var(--gradient-gold)" }}
+                style={{ backgroundImage: "var(--gradient-gold)", paddingRight: "0.25em" }}
                 initial={{ y: "100%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 exit={{ y: "-110%", opacity: 0 }}

@@ -20,7 +20,7 @@ export function Marquee() {
         <motion.div
           className="flex shrink-0 gap-12 pr-12"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
         >
           {[...ITEMS, ...ITEMS, ...ITEMS, ...ITEMS].map((s, i) => (
             <span

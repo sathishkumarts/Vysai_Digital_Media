@@ -34,14 +34,16 @@ export function StoryScroll() {
           }}
         />
 
-        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
-          <div className="relative h-[60vh] md:h-[70vh]">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-6 md:gap-12 px-6 md:grid-cols-2">
+          {/* Visual card container */}
+          <div className="relative h-[25vh] sm:h-[35vh] md:h-[70vh] w-full">
             {CHAPTERS.map((c, i) => (
               <Layer key={c.n} index={i} progress={scrollYProgress} total={CHAPTERS.length} />
             ))}
           </div>
 
-          <div className="relative h-[60vh] md:h-[70vh]">
+          {/* Text container */}
+          <div className="relative h-[35vh] sm:h-[40vh] md:h-[70vh] w-full">
             {CHAPTERS.map((c, i) => (
               <Chapter
                 key={c.n}
@@ -69,27 +71,33 @@ function Chapter({
   progress: any;
   total: number;
 }) {
-  const step = 1 / total;
-  const start = index * step;
-  const opacity = useTransform(
-    progress,
-    [start - 0.1, start + 0.05, start + step - 0.05, start + step + 0.1],
-    [0, 1, 1, 0],
-  );
-  const y = useTransform(
-    progress,
-    [start - 0.1, start + 0.05, start + step - 0.05, start + step + 0.1],
-    [40, 0, 0, -40],
-  );
+  let rangeProgress, rangeOpacity, rangeY;
+  if (index === 0) {
+    rangeProgress = [0, 0.25, 0.33, 1];
+    rangeOpacity = [1, 1, 0, 0];
+    rangeY = [0, 0, -30, -30];
+  } else if (index === 1) {
+    rangeProgress = [0, 0.25, 0.33, 0.58, 0.66, 1];
+    rangeOpacity = [0, 0, 1, 1, 0, 0];
+    rangeY = [30, 30, 0, 0, -30, -30];
+  } else {
+    rangeProgress = [0, 0.58, 0.66, 1];
+    rangeOpacity = [0, 0, 1, 1];
+    rangeY = [30, 30, 0, 0];
+  }
+
+  const opacity = useTransform(progress, rangeProgress, rangeOpacity);
+  const y = useTransform(progress, rangeProgress, rangeY);
+
   return (
     <motion.div style={{ opacity, y }} className="absolute inset-0 flex flex-col justify-center">
-      <div className="font-mono text-xs uppercase tracking-[0.35em] text-gold">
+      <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.35em] text-gold">
         Chapter {chapter.n}
       </div>
-      <h3 className="mt-4 font-display text-5xl leading-tight tracking-tight md:text-7xl">
+      <h3 className="mt-2 md:mt-4 font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tight">
         {chapter.title}
       </h3>
-      <p className="mt-6 max-w-md text-base text-muted-foreground md:text-lg">{chapter.body}</p>
+      <p className="mt-3 md:mt-6 max-w-md text-sm md:text-lg text-muted-foreground">{chapter.body}</p>
     </motion.div>
   );
 }
@@ -97,12 +105,21 @@ function Chapter({
 function Layer({ index, progress, total }: { index: number; progress: any; total: number }) {
   const step = 1 / total;
   const start = index * step;
-  const opacity = useTransform(
-    progress,
-    [start - 0.1, start + 0.05, start + step - 0.05, start + step + 0.1],
-    [0, 1, 1, 0],
-  );
-  const scale = useTransform(progress, [start, start + step], [1.05, 1.2]);
+
+  let rangeProgress, rangeOpacity;
+  if (index === 0) {
+    rangeProgress = [0, 0.25, 0.33, 1];
+    rangeOpacity = [1, 1, 0, 0];
+  } else if (index === 1) {
+    rangeProgress = [0, 0.25, 0.33, 0.58, 0.66, 1];
+    rangeOpacity = [0, 0, 1, 1, 0, 0];
+  } else {
+    rangeProgress = [0, 0.58, 0.66, 1];
+    rangeOpacity = [0, 0, 1, 1];
+  }
+
+  const opacity = useTransform(progress, rangeProgress, rangeOpacity);
+  const scale = useTransform(progress, [start, start + step], [1.02, 1.12]);
 
   const palettes = [
     "linear-gradient(135deg, oklch(0.32 0.06 60), oklch(0.18 0.03 60))",
@@ -113,7 +130,7 @@ function Layer({ index, progress, total }: { index: number; progress: any; total
   return (
     <motion.div
       style={{ opacity, scale }}
-      className="absolute inset-0 overflow-hidden rounded-3xl glass-panel gold-border"
+      className="absolute inset-0 overflow-hidden rounded-2xl md:rounded-3xl glass-panel gold-border"
     >
       <div className="absolute inset-0" style={{ background: palettes[index] }} />
       <div
@@ -122,7 +139,7 @@ function Layer({ index, progress, total }: { index: number; progress: any; total
       />
       <div className="absolute inset-0 grid place-items-center">
         <span
-          className="font-display text-[28vh] leading-none gold-text opacity-30"
+          className="font-display text-[10vh] md:text-[28vh] leading-none gold-text opacity-30"
           style={{ backgroundImage: "var(--gradient-gold)" }}
         >
           0{index + 1}
