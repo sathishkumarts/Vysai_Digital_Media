@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import ohMyKulfiImg from "../assets/oh_my_kulfi.png";
 
 type Project = {
   title: string;
@@ -23,7 +24,7 @@ const PROJECTS: Project[] = [
       { label: "Active Brand Partnership", value: "2 Months" },
       { label: "Customer & Franchise Response", value: "Positive" },
     ],
-    image: "/src/assets/oh_my_kulfi.png",
+    image: ohMyKulfiImg,
     accent: "38 0.15 45",
   },
   {

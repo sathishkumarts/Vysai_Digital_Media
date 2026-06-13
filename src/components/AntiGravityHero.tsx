@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
 import { ArrowUpRight, Play } from "lucide-react";
 import { MagneticButton } from "./MagneticButton";
+import howerImg from "../assets/hower.png";
 
 const ROTATING_WORDS = ["results.", "visibility.", "leads.", "growth."];
 
@@ -197,7 +198,7 @@ export function AntiGravityHero() {
             className="absolute right-[-10%] top-[-8%] md:right-[-25%] md:top-[-20%] h-[500px] w-[500px] sm:h-[600px] sm:w-[600px] md:h-[780px] md:w-[780px]"
           >
             <img
-              src="/src/assets/hower.png"
+              src={howerImg}
               alt="Vysai Digital Media hero visual"
               className="h-full w-full object-contain"
               draggable={false}
