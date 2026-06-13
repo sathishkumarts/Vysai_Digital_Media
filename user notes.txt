@@ -1,0 +1,19 @@
+unhide portfolio
+hanges Made:
+Model Modification: Added an optional visible?: boolean flag to the Project type definition in 
+
+Portfolio.tsx
+.
+Hidden Case Studies: Added visible: false to both Solène Resorts and Noir & Bean Coffee inside the PROJECTS list.
+Render Update: Updated the portfolio component rendering to filter out hidden projects:
+tsx
+{PROJECTS.filter((p) => p.visible !== false).map((p, i) => (
+  <ProjectScene key={p.title} project={p} index={i} />
+))}
+Verification:
+Verified via browser tests that only "Oh My Kulfi" and "Volt Athletics" display in the Portfolio section.
+The other two are hidden but their configurations remain safely in the source file ready for you to re-enable them in the future by simply removing visible: false.
+You can view the updated walkthrough document here: 
+        {PROJECTS.map((p, i) => (
+        {PROJECTS.filter((p) => p.visible !== false).map((p, i) => (
+          <ProjectScene key={p.title} project={p} index={i} />
