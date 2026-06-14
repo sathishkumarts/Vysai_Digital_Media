@@ -85,7 +85,7 @@ export function FAQ() {
                       <Plus size={16} />
                     </motion.span>
                   </button>
-                  <AnimatePresence initial={false}>
+                  <AnimatePresence>
                     {isOpen && (
                       <motion.div
                         key="content"

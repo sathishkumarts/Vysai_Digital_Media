@@ -79,6 +79,17 @@ const cardVariants = {
   }),
 };
 
+function goToContact(planId: string) {
+  // Always scroll the contact section into view — works even if hash is already set
+  const el = document.getElementById("contact");
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+
+  // Update the hash so LeadForm can pre-select the plan
+  // Use replaceState first to reset any existing same hash, then set it
+  history.replaceState(null, "", "#");
+  window.location.hash = `contact-${planId}`;
+}
+
 export function Packages() {
   return (
     <section id="packages" className="relative py-32 overflow-hidden">
@@ -213,8 +224,9 @@ export function Packages() {
 
                   {/* CTA */}
                   <div className="mt-8">
-                    <a
-                      href={`#contact-${pkg.id}`}
+                    <button
+                      type="button"
+                      onClick={() => goToContact(pkg.id)}
                       className={`group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl px-6 py-3.5 text-sm font-medium transition-all duration-500 ${
                         isFeatured
                           ? "bg-[image:var(--gradient-gold)] text-[color:var(--primary-foreground)] shadow-[0_0_30px_-6px_var(--gold)] hover:shadow-[0_0_50px_-4px_var(--gold)]"
@@ -225,7 +237,7 @@ export function Packages() {
                       {isFeatured && (
                         <span className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-gold)] opacity-0 transition-opacity duration-500 group-hover:opacity-30" />
                       )}
-                    </a>
+                    </button>
                   </div>
                 </div>
               </motion.div>

@@ -116,6 +116,7 @@ function FacebookIcon({ size = 18 }: { size?: number }) {
 export function Footer() {
   return (
     <footer
+      id="footer-contact"
       className="relative mt-20 overflow-hidden border-t border-[color:var(--border)]"
     >
       {/* Gold glow */}
