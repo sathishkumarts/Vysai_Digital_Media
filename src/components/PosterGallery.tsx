@@ -36,24 +36,24 @@ const POSTERS: Poster[] = [
     size: "square",
   },
   {
+    title: "Aura 10·10",
+    client: "Golden Marbles",
+    category: "Product Launch",
+    image: goldenMarbles5,
+    size: "wide",
+  },
+  {
     title: "Grand Opening",
     client: "Oh My Kulfi — Tiruppur",
     category: "Restaurant",
     image: omKTiruppur,
-    size: "wide",
+    size: "tall",
   },
   {
     title: "Premium Marbles",
     client: "Golden Marbles",
     category: "Product Launch",
     image: goldenMarbles,
-    size: "tall",
-  },
-  {
-    title: "Aura 10·10",
-    client: "Golden Marbles",
-    category: "Product Launch",
-    image: goldenMarbles5,
     size: "square",
   },
   {
