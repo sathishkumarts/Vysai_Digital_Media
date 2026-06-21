@@ -179,9 +179,10 @@ export function PosterGallery() {
               {/* Real poster image */}
               <img
                 src={p.image}
-                alt={p.title}
+                alt={`${p.title} — ${p.client} | Vysai Digital Media`}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.07]"
                 loading="lazy"
+                decoding="async"
               />
 
               {/* Overlay gradient */}

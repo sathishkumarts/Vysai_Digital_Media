@@ -205,10 +205,11 @@ function ProjectVisual({
       >
         <motion.img
           src={project.image}
-          alt={project.client}
+          alt={project.title + " — " + project.client}
           style={{ y: imageY, scale: imageScale }}
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.08]"
           loading="lazy"
+          decoding="async"
         />
         {/* spotlight */}
         <div
@@ -222,7 +223,7 @@ function ProjectVisual({
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[oklch(0.08_0.01_60/0.85)] to-transparent" />
         <div className="absolute inset-x-6 bottom-6 flex items-end justify-between text-xs uppercase tracking-[0.25em] text-white/80">
           <span>{project.client.split("·")[0]}</span>
-          <span className="text-gold">Vysai · 0{(Math.random() * 9) | (0 + 1)}</span>
+          <span className="text-gold">Vysai · 0{String(Math.abs(project.title.charCodeAt(0) % 9) + 1)}</span>
         </div>
       </div>
     </div>

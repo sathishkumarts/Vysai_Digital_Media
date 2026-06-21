@@ -197,9 +197,11 @@ export function AntiGravityHero() {
           >
             <img
               src={howerImg}
-              alt="Vysai Digital Media hero visual"
+              alt="Vysai Digital Media — digital marketing agency in Villupuram, Tamil Nadu"
               className="h-full w-full object-contain"
               draggable={false}
+              fetchPriority="high"
+              decoding="async"
             />
           </motion.div>
 

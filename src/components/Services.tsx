@@ -313,10 +313,12 @@ function ServiceCard({
         >
           <motion.img
             src={service.image}
-            alt={service.title}
+            alt={`${service.title} — Vysai Digital Media service`}
             className="absolute inset-0 h-full w-full object-cover"
             animate={{ scale: hovered ? 1.06 : 1 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            loading="lazy"
+            decoding="async"
           />
           {/* Image overlay gradient */}
           <div

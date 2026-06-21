@@ -1,0 +1,12 @@
+# robots.txt — Vysai Digital Media
+# https://www.vysaidigitalmedia.in/robots.txt
+
+User-agent: *
+Allow: /
+
+# Block any build artifacts or private paths (none expected, but safe defaults)
+Disallow: /node_modules/
+Disallow: /.git/
+
+# Sitemap location
+Sitemap: https://www.vysaidigitalmedia.in/sitemap.xml
