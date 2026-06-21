@@ -249,7 +249,11 @@ const FULL_TEXT = "VYSAI · LOADING THE EXPERIENCE";
 /* ─── Main export ─────────────────────────────────────────────────── */
 export function LoadingScreen() {
   const [glitching, setGlitching] = useState(true);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(() => {
+    // If the page is already fully loaded (e.g. cached / fast reload), skip entirely
+    if (typeof document !== "undefined" && document.readyState === "complete") return false;
+    return true;
+  });
   const [exiting, setExiting] = useState(false);
   const [noiseOpacity, setNoiseOpacity] = useState(0.05);
 
@@ -257,12 +261,31 @@ export function LoadingScreen() {
   const typewriterIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
+    if (!visible) return;
+
     injectStyles();
 
-    const t1 = setTimeout(() => { setGlitching(false); setNoiseOpacity(0.02); }, 1600);
-    // Start exit animation at 2.8s, then fully unmount at 3.4s
-    const t2 = setTimeout(() => setExiting(true), 2800);
-    const t3 = setTimeout(() => setVisible(false), 3400);
+    // Stop glitch effect after 1.2s
+    const t1 = setTimeout(() => { setGlitching(false); setNoiseOpacity(0.02); }, 1200);
+
+    // Wait for the page to actually finish loading
+    const mountedAt = Date.now();
+    const MIN_DISPLAY = 800; // minimum ms to show so it doesn't flash
+
+    const dismiss = () => {
+      const elapsed = Date.now() - mountedAt;
+      const remaining = Math.max(0, MIN_DISPLAY - elapsed);
+      setTimeout(() => {
+        setExiting(true);
+        setTimeout(() => setVisible(false), 600); // exit animation duration
+      }, remaining);
+    };
+
+    if (document.readyState === "complete") {
+      dismiss();
+    } else {
+      window.addEventListener("load", dismiss, { once: true });
+    }
 
     typewriterIntervalRef.current = setInterval(() => {
       setChars((prev) => {
@@ -276,11 +299,10 @@ export function LoadingScreen() {
 
     return () => {
       clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
+      window.removeEventListener("load", dismiss);
       if (typewriterIntervalRef.current) clearInterval(typewriterIntervalRef.current);
     };
-  }, []);
+  }, [visible]);
 
   const displayed = FULL_TEXT.slice(0, chars);
   const done = chars >= FULL_TEXT.length;
