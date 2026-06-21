@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import ohMyKulfiImg from "../assets/oh_my_kulfi.png";
+import futureClientsImg from "../assets/futureClients.png";
 
 type Project = {
   title: string;
@@ -28,16 +29,15 @@ const PROJECTS: Project[] = [
     accent: "38 0.15 45",
   },
   {
-    title: "From street to screen",
-    client: "Volt Athletics",
-    tag: "Performance · Video · Paid Social",
+    title: "Emerging Collaborations",
+    client: "Creative Samples Shared Across Multiple Industries",
+    tag: "Branding & Design · Real Estate Marketing · Digital Strategy",
     metrics: [
-      { label: "ROAS", value: "8.7×" },
-      { label: "CAC", value: "-42%" },
-      { label: "Followers", value: "+ 184k" },
+      { label: "Golden Marbles", value: "Branding" },
+      { label: "Banu Promotors", value: "Real Estate" },
+      { label: "John Dewey", value: "Strategy" },
     ],
-    image:
-      "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80",
+    image: futureClientsImg,
     accent: "62 0.18 30",
   },
   {
