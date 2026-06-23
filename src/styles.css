@@ -218,6 +218,19 @@
        of the actual page content behind it. */
   }
 
+  .glass-panel-mobile {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--card) 98%, transparent),
+      color-mix(in oklab, var(--card) 92%, transparent)
+    );
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid color-mix(in oklab, var(--gold) 18%, transparent);
+    box-shadow: var(--shadow-glass);
+    isolation: isolate;
+  }
+
   .gold-border {
     position: relative;
   }

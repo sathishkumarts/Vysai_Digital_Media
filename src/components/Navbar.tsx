@@ -214,7 +214,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0, scaleY: 1 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               style={{ transformOrigin: "top", isolation: "isolate" }}
-              className="mx-3 mt-2 rounded-2xl glass-panel"
+              className="mx-3 mt-2 rounded-2xl glass-panel-mobile"
             >
               {/* Inner wrapper handles overflow — never put overflow-hidden on the backdrop-filter element */}
               <div className="overflow-hidden rounded-2xl">
