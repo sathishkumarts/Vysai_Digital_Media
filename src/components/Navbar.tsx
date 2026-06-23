@@ -59,6 +59,22 @@ export function Navbar() {
     setServicesOpen(false);
   };
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      closeAll();
+      const target = document.querySelector(href);
+      if (target) {
+        const lenis = (window as any).lenis;
+        if (lenis) {
+          lenis.scrollTo(target);
+        } else {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
+
   return (
     <>
       <motion.header
@@ -77,7 +93,7 @@ export function Navbar() {
           } : undefined}
         >
           {/* Logo */}
-          <a href="#" className="flex items-center pl-1">
+          <a href="#" onClick={(e) => scrollToSection(e, "#")} className="flex items-center pl-1">
             <div
               style={{
                 width: "140px", height: "60px",
@@ -98,6 +114,7 @@ export function Navbar() {
             {/* Work — plain link */}
             <a
               href="#work"
+              onClick={(e) => scrollToSection(e, "#work")}
               className="group relative inline-flex items-center px-4 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               Work
@@ -112,6 +129,7 @@ export function Navbar() {
             >
               <a
                 href="#services"
+                onClick={(e) => scrollToSection(e, "#services")}
                 className="group relative inline-flex items-center gap-1 px-4 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 Services
@@ -143,7 +161,7 @@ export function Navbar() {
                         <a
                           key={item.label}
                           href={item.href}
-                          onClick={() => setServicesOpen(false)}
+                          onClick={(e) => scrollToSection(e, item.href)}
                           className="group/item flex flex-col rounded-xl px-3 py-2.5 transition-all duration-200 hover:bg-[color-mix(in_oklab,var(--gold)_8%,transparent)]"
                         >
                           <span className="flex items-center justify-between text-[13px] font-semibold text-foreground group-hover/item:text-gold transition-colors">
@@ -168,6 +186,7 @@ export function Navbar() {
               <a
                 key={l.label}
                 href={l.href}
+                onClick={(e) => scrollToSection(e, l.href)}
                 className="group relative inline-flex items-center px-4 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 {l.label}
@@ -181,12 +200,13 @@ export function Navbar() {
             <ThemeToggle />
             <a
               href="#packages"
+              onClick={(e) => scrollToSection(e, "#packages")}
               className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--gold)]/40 bg-[color-mix(in_oklab,var(--gold)_10%,transparent)] px-4 py-1.5 text-xs font-medium text-gold transition-all duration-300 hover:bg-[color-mix(in_oklab,var(--gold)_18%,transparent)] hover:border-[color:var(--gold)]/70 hover:shadow-[0_0_16px_-4px_var(--gold)]"
             >
               <span className="size-1.5 rounded-full bg-[color:var(--gold)] animate-pulse-gold" />
               Packages
             </a>
-            <a href="#footer-contact" className="inline-block">
+            <a href="#footer-contact" onClick={(e) => scrollToSection(e, "#footer-contact")} className="inline-block">
               <MagneticButton className="px-5 py-2 text-xs">Let's talk</MagneticButton>
             </a>
           </div>
@@ -224,7 +244,7 @@ export function Navbar() {
                   {/* Work */}
                   <a
                     href="#work"
-                    onClick={closeAll}
+                    onClick={(e) => scrollToSection(e, "#work")}
                     className="flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-muted-foreground transition-all duration-200 hover:bg-[color-mix(in_oklab,var(--gold)_8%,transparent)] hover:text-foreground"
                   >
                     Work <span className="text-gold text-xs opacity-60">→</span>
@@ -254,7 +274,7 @@ export function Navbar() {
                             <a
                               key={sub.label}
                               href={sub.href}
-                              onClick={closeAll}
+                              onClick={(e) => scrollToSection(e, sub.href)}
                               className="rounded-lg px-3 py-2.5 hover:bg-[color-mix(in_oklab,var(--gold)_8%,transparent)] transition-all duration-200"
                             >
                               <div className="text-sm font-semibold text-foreground">{sub.label}</div>
@@ -271,7 +291,7 @@ export function Navbar() {
                     <a
                       key={l.label}
                       href={l.href}
-                      onClick={closeAll}
+                      onClick={(e) => scrollToSection(e, l.href)}
                       className="flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-muted-foreground transition-all duration-200 hover:bg-[color-mix(in_oklab,var(--gold)_8%,transparent)] hover:text-foreground"
                     >
                       {l.label} <span className="text-gold text-xs opacity-60">→</span>
@@ -284,7 +304,7 @@ export function Navbar() {
                 <div className="flex flex-col gap-3 px-4 py-4">
                   <a
                     href="#packages"
-                    onClick={closeAll}
+                    onClick={(e) => scrollToSection(e, "#packages")}
                     className="flex items-center justify-center gap-2 rounded-full border border-[color:var(--gold)]/40 bg-[color-mix(in_oklab,var(--gold)_10%,transparent)] px-4 py-3 text-sm font-medium text-gold transition-all duration-300 hover:bg-[color-mix(in_oklab,var(--gold)_18%,transparent)]"
                   >
                     <span className="size-1.5 rounded-full bg-[color:var(--gold)] animate-pulse-gold" />
@@ -292,7 +312,7 @@ export function Navbar() {
                   </a>
                   <a
                     href="#footer-contact"
-                    onClick={closeAll}
+                    onClick={(e) => scrollToSection(e, "#footer-contact")}
                     className="flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-medium text-[color:var(--primary-foreground)] transition-all duration-300 hover:opacity-90"
                     style={{ background: "var(--gradient-gold)", boxShadow: "var(--shadow-gold)" }}
                   >
