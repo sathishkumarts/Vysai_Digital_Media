@@ -213,31 +213,33 @@ export function Navbar() {
               initial={{ opacity: 0, y: -12, scaleY: 0.92 }}
               animate={{ opacity: 1, y: 0, scaleY: 1 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              style={{ transformOrigin: "top" }}
-              className="mx-3 mt-2 rounded-2xl glass-panel overflow-hidden"
+              style={{ transformOrigin: "top", isolation: "isolate" }}
+              className="mx-3 mt-2 rounded-2xl glass-panel"
             >
-              <nav className="flex flex-col px-2 pt-4 pb-2">
-                {/* Work */}
-                <a
-                  href="#work"
-                  onClick={closeAll}
-                  className="flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-muted-foreground transition-all duration-200 hover:bg-[color-mix(in_oklab,var(--gold)_8%,transparent)] hover:text-foreground"
-                >
-                  Work <span className="text-gold text-xs opacity-60">→</span>
-                </a>
-
-                {/* Services — with accordion */}
-                <div className="flex flex-col">
-                  <button
-                    onClick={() => setServicesOpen((v) => !v)}
+              {/* Inner wrapper handles overflow — never put overflow-hidden on the backdrop-filter element */}
+              <div className="overflow-hidden rounded-2xl">
+                <nav className="flex flex-col px-2 pt-4 pb-2">
+                  {/* Work */}
+                  <a
+                    href="#work"
+                    onClick={closeAll}
                     className="flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-muted-foreground transition-all duration-200 hover:bg-[color-mix(in_oklab,var(--gold)_8%,transparent)] hover:text-foreground"
                   >
-                    Services
-                    <ChevronDown
-                      size={16}
-                      className={`transition-transform duration-300 ${servicesOpen ? "rotate-180 text-gold" : "text-muted-foreground/60"}`}
-                    />
-                  </button>
+                    Work <span className="text-gold text-xs opacity-60">→</span>
+                  </a>
+
+                  {/* Services — with accordion */}
+                  <div className="flex flex-col">
+                    <button
+                      onClick={() => setServicesOpen((v) => !v)}
+                      className="flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-muted-foreground transition-all duration-200 hover:bg-[color-mix(in_oklab,var(--gold)_8%,transparent)] hover:text-foreground"
+                    >
+                      Services
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-300 ${servicesOpen ? "rotate-180 text-gold" : "text-muted-foreground/60"}`}
+                      />
+                    </button>
                     {servicesOpen && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
@@ -260,41 +262,42 @@ export function Navbar() {
                         </div>
                       </motion.div>
                     )}
-                </div>
+                  </div>
 
-                {/* Remaining plain links */}
-                {PLAIN_LINKS.slice(1).map((l) => (
+                  {/* Remaining plain links */}
+                  {PLAIN_LINKS.slice(1).map((l) => (
+                    <a
+                      key={l.label}
+                      href={l.href}
+                      onClick={closeAll}
+                      className="flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-muted-foreground transition-all duration-200 hover:bg-[color-mix(in_oklab,var(--gold)_8%,transparent)] hover:text-foreground"
+                    >
+                      {l.label} <span className="text-gold text-xs opacity-60">→</span>
+                    </a>
+                  ))}
+                </nav>
+
+                <div className="mx-4 h-px bg-[color:var(--border)]" />
+
+                <div className="flex flex-col gap-3 px-4 py-4">
                   <a
-                    key={l.label}
-                    href={l.href}
+                    href="#packages"
                     onClick={closeAll}
-                    className="flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-muted-foreground transition-all duration-200 hover:bg-[color-mix(in_oklab,var(--gold)_8%,transparent)] hover:text-foreground"
+                    className="flex items-center justify-center gap-2 rounded-full border border-[color:var(--gold)]/40 bg-[color-mix(in_oklab,var(--gold)_10%,transparent)] px-4 py-3 text-sm font-medium text-gold transition-all duration-300 hover:bg-[color-mix(in_oklab,var(--gold)_18%,transparent)]"
                   >
-                    {l.label} <span className="text-gold text-xs opacity-60">→</span>
+                    <span className="size-1.5 rounded-full bg-[color:var(--gold)] animate-pulse-gold" />
+                    View Packages
                   </a>
-                ))}
-              </nav>
-
-              <div className="mx-4 h-px bg-[color:var(--border)]" />
-
-              <div className="flex flex-col gap-3 px-4 py-4">
-                <a
-                  href="#packages"
-                  onClick={closeAll}
-                  className="flex items-center justify-center gap-2 rounded-full border border-[color:var(--gold)]/40 bg-[color-mix(in_oklab,var(--gold)_10%,transparent)] px-4 py-3 text-sm font-medium text-gold transition-all duration-300 hover:bg-[color-mix(in_oklab,var(--gold)_18%,transparent)]"
-                >
-                  <span className="size-1.5 rounded-full bg-[color:var(--gold)] animate-pulse-gold" />
-                  View Packages
-                </a>
-                <a
-                  href="#footer-contact"
-                  onClick={closeAll}
-                  className="flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-medium text-[color:var(--primary-foreground)] transition-all duration-300 hover:opacity-90"
-                  style={{ background: "var(--gradient-gold)", boxShadow: "var(--shadow-gold)" }}
-                >
-                  Let's talk →
-                </a>
-              </div>
+                  <a
+                    href="#footer-contact"
+                    onClick={closeAll}
+                    className="flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-medium text-[color:var(--primary-foreground)] transition-all duration-300 hover:opacity-90"
+                    style={{ background: "var(--gradient-gold)", boxShadow: "var(--shadow-gold)" }}
+                  >
+                    Let's talk →
+                  </a>
+                </div>
+              </div>{/* end inner overflow wrapper */}
             </motion.div>
           )}
       </motion.header>
