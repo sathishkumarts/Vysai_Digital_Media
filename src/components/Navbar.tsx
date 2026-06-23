@@ -62,8 +62,8 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        initial={{ y: -30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={{ marginTop: -30, opacity: 0 }}
+        animate={{ marginTop: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "py-2" : "py-4"}`}
         ref={menuRef}
