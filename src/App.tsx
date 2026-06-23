@@ -18,24 +18,26 @@ import { GoldenDust } from "@/components/GoldenDust";
 
 export default function App() {
   return (
-    <main className="relative min-h-screen overflow-x-clip">
-      <LoadingScreen />
-      <SmoothScroll />
-      <GoldenDust />
+    <>
       <Navbar />
-      <AntiGravityHero />
-      <Marquee />
-      <Portfolio />
-      <Reels />
-      <PosterGallery />
-      <StoryScroll />
-      <Services />
-      <Testimonials />
-      <FAQ />
-      <Packages />
-      <LeadForm />
-      <Footer />
-      <WhatsAppFloat />
-    </main>
+      <main className="relative min-h-screen overflow-x-clip">
+        <LoadingScreen />
+        <SmoothScroll />
+        <GoldenDust />
+        <AntiGravityHero />
+        <Marquee />
+        <Portfolio />
+        <Reels />
+        <PosterGallery />
+        <StoryScroll />
+        <Services />
+        <Testimonials />
+        <FAQ />
+        <Packages />
+        <LeadForm />
+        <Footer />
+        <WhatsAppFloat />
+      </main>
+    </>
   );
 }
