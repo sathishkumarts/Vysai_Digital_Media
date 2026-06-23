@@ -125,32 +125,41 @@ export function Navbar() {
               </a>
 
                 {servicesOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute left-1/2 top-full z-50 mt-2 w-[290px] -translate-x-1/2 rounded-2xl p-3 glass-panel"
-                  >
-                    {SERVICES_DROPDOWN.map((item) => (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        onClick={() => setServicesOpen(false)}
-                        className="group/item flex flex-col rounded-xl px-3 py-2.5 transition-all duration-200 hover:bg-[color-mix(in_oklab,var(--gold)_8%,transparent)]"
-                      >
-                        <span className="flex items-center justify-between text-[13px] font-semibold text-foreground group-hover/item:text-gold transition-colors">
-                          {item.label}
-                          <ArrowUpRight
-                            size={12}
-                            className="opacity-0 translate-x-1 -translate-y-1 transition-all duration-200 group-hover/item:opacity-100 group-hover/item:translate-x-0 group-hover/item:translate-y-0 text-gold"
-                          />
-                        </span>
-                        <span className="mt-0.5 text-[11px] text-muted-foreground">
-                          {item.desc}
-                        </span>
-                      </a>
-                    ))}
-                  </motion.div>
+                  <div className="absolute left-1/2 top-full z-50 pt-2 w-[290px] -translate-x-1/2">
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                      className="rounded-2xl p-3"
+                      style={{
+                        background: "color-mix(in oklab, var(--popover) 97%, transparent)",
+                        backdropFilter: "blur(24px) saturate(160%)",
+                        WebkitBackdropFilter: "blur(24px) saturate(160%)",
+                        border: "1px solid color-mix(in oklab, var(--gold) 28%, transparent)",
+                        boxShadow: "0 24px 64px -12px oklch(0 0 0 / .7), 0 0 0 1px oklch(0 0 0 / .3), inset 0 1px 0 color-mix(in oklab, var(--gold) 15%, transparent)",
+                      }}
+                    >
+                      {SERVICES_DROPDOWN.map((item) => (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          onClick={() => setServicesOpen(false)}
+                          className="group/item flex flex-col rounded-xl px-3 py-2.5 transition-all duration-200 hover:bg-[color-mix(in_oklab,var(--gold)_8%,transparent)]"
+                        >
+                          <span className="flex items-center justify-between text-[13px] font-semibold text-foreground group-hover/item:text-gold transition-colors">
+                            {item.label}
+                            <ArrowUpRight
+                              size={12}
+                              className="opacity-0 translate-x-1 -translate-y-1 transition-all duration-200 group-hover/item:opacity-100 group-hover/item:translate-x-0 group-hover/item:translate-y-0 text-gold"
+                            />
+                          </span>
+                          <span className="mt-0.5 text-[11px] text-muted-foreground">
+                            {item.desc}
+                          </span>
+                        </a>
+                      ))}
+                    </motion.div>
+                  </div>
                 )}
             </div>
 
