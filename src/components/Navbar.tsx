@@ -129,14 +129,7 @@ export function Navbar() {
                     initial={{ opacity: 0, y: 8, scale: 0.96 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute left-1/2 top-full z-50 mt-2 w-[290px] -translate-x-1/2 rounded-2xl p-3"
-                    style={{
-                      background: "oklch(0.13 0.012 60 / 0.97)",
-                      backdropFilter: "blur(24px) saturate(160%)",
-                      WebkitBackdropFilter: "blur(24px) saturate(160%)",
-                      border: "1px solid color-mix(in oklab, var(--gold) 28%, transparent)",
-                      boxShadow: "0 24px 64px -12px oklch(0 0 0 / .7), 0 0 0 1px oklch(0 0 0 / .3), inset 0 1px 0 color-mix(in oklab, var(--gold) 15%, transparent)",
-                    }}
+                    className="absolute left-1/2 top-full z-50 mt-2 w-[290px] -translate-x-1/2 rounded-2xl p-3 glass-panel"
                   >
                     {SERVICES_DROPDOWN.map((item) => (
                       <a
