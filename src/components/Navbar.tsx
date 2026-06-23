@@ -15,12 +15,12 @@ const PLAIN_LINKS = [
 ];
 
 const SERVICES_DROPDOWN = [
-  { label: "Meta & Google Ads",      desc: "Paid acquisition & lead gen",              href: "#services" },
-  { label: "SEO & Local Search",     desc: "Google Business & organic rank",            href: "#services" },
-  { label: "Social Media Mgt",       desc: "Full-scale brand posting & management",     href: "#services" },
-  { label: "Video Reels & Editing",  desc: "Cinematic short-form content",              href: "#services" },
-  { label: "Website Development",    desc: "Fast responsive sites & e-commerce",        href: "#services" },
-  { label: "Branding & Graphics",    desc: "Complete visual identities",                href: "#services" },
+  { label: "Meta & Google Ads",      desc: "Paid acquisition & lead gen",              href: "#service-ads" },
+  { label: "SEO & Local Search",     desc: "Google Business & organic rank",            href: "#service-seo" },
+  { label: "Social Media Mgt",       desc: "Full-scale brand posting & management",     href: "#service-social" },
+  { label: "Video Reels & Editing",  desc: "Cinematic short-form content",              href: "#service-video" },
+  { label: "Website Development",    desc: "Fast responsive sites & e-commerce",        href: "#service-web" },
+  { label: "Branding & Graphics",    desc: "Complete visual identities",                href: "#service-branding" },
 ];
 
 export function Navbar() {
@@ -86,7 +86,7 @@ export function Navbar() {
       >
         <div
           className={`mx-auto flex max-w-7xl items-center justify-between rounded-full px-4 sm:px-6 transition-all duration-500 ${
-            scrolled ? "glass-panel py-1 mx-3 sm:mx-4 md:mx-auto" : "bg-transparent py-1"
+            scrolled ? "navbar-glass py-1 mx-3 sm:mx-4 md:mx-auto" : "bg-transparent py-1"
           }`}
           style={scrolled ? {
             boxShadow: "0 10px 40px -10px oklch(0 0 0 / .4), inset 0 -1px 0 color-mix(in oklab, var(--gold) 25%, transparent)",

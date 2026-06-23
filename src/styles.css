@@ -211,6 +211,19 @@
     box-shadow: var(--shadow-glass);
   }
 
+  /* Navbar-specific glass — uses a high-opacity solid background
+     instead of backdrop-filter so it works reliably on Vercel,
+     mobile, and any environment where compositor layers break blur. */
+  .navbar-glass {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--card) 92%, transparent),
+      color-mix(in oklab, var(--card) 85%, transparent)
+    );
+    border: 1px solid color-mix(in oklab, var(--gold) 18%, transparent);
+    box-shadow: var(--shadow-glass);
+  }
+
   .glass-panel-mobile {
     background: linear-gradient(
       135deg,

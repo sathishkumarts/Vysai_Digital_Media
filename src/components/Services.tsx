@@ -26,6 +26,7 @@ import brandingImg from "../assets/service_branding.png";
 const SERVICES = [
   {
     id: "01",
+    slug: "service-ads",
     icon: Megaphone,
     title: "Meta & Google Ads",
     tagline: "ROI-Driven Paid Advertising",
@@ -50,6 +51,7 @@ const SERVICES = [
   },
   {
     id: "02",
+    slug: "service-seo",
     icon: Search,
     title: "SEO & Local Search",
     tagline: "Rank. Dominate. Convert.",
@@ -74,6 +76,7 @@ const SERVICES = [
   },
   {
     id: "03",
+    slug: "service-social",
     icon: PenTool,
     title: "Social Media Management",
     tagline: "Build. Engage. Grow.",
@@ -98,6 +101,7 @@ const SERVICES = [
   },
   {
     id: "04",
+    slug: "service-video",
     icon: Film,
     title: "Video Editing & Reels",
     tagline: "Stop the Scroll. Start the Story.",
@@ -122,6 +126,7 @@ const SERVICES = [
   },
   {
     id: "05",
+    slug: "service-web",
     icon: Code2,
     title: "Website Development",
     tagline: "Fast. SEO-Ready. Built to Convert.",
@@ -146,6 +151,7 @@ const SERVICES = [
   },
   {
     id: "06",
+    slug: "service-branding",
     icon: BarChart3,
     title: "Branding & Graphic Design",
     tagline: "Identity That Commands Respect.",
@@ -297,6 +303,7 @@ function ServiceCard({
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
       className="group relative"
+      id={service.slug}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
