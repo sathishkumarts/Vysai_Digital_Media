@@ -8,7 +8,7 @@ const ROTATING_WORDS = ["results.", "visibility.", "leads.", "growth."];
 
 const STATS = [
   { k: "3+", v: "Active Clients" },
-  { k: "2 Months", v: "Of Consistent Growth" },
+  { k: "3 Months", v: "Of Consistent Growth" },
   { k: "100+", v: "Creative Assets Delivered" },
   { k: "100%", v: "Founder-Led Support" },
 ];
