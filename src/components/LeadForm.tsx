@@ -3,9 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { User, Phone, Briefcase, MessageSquare, CheckCircle, AlertCircle, Loader2, Send } from "lucide-react";
 import { MagneticButton } from "./MagneticButton";
 
-// Configure your Formspree Form ID here
-// Can be overridden by VITE_FORMSPREE_FORM_ID environment variable
-const FORMSPREE_FORM_ID = import.meta.env.VITE_FORMSPREE_FORM_ID || "mbdepeez";
+// Web3Forms access key — set VITE_WEB3FORMS_ACCESS_KEY in your .env / Vercel environment variables
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string;
 
 const PLANS = [
   { id: "basic", label: "Basic Plan", desc: "₹6,999/mo" },
@@ -133,6 +132,7 @@ export function LeadForm() {
     const chosenPlanText = chosenPlanObj ? `${chosenPlanObj.label} (${chosenPlanObj.desc})` : selectedPlan;
 
     const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
       name: formData.name,
       phone: formData.phone,
       businessName: formData.businessName,
@@ -142,7 +142,7 @@ export function LeadForm() {
     };
 
     try {
-      const response = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Accept": "application/json",
@@ -151,7 +151,9 @@ export function LeadForm() {
         body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (response.ok && data.success) {
         setSubmitStatus("success");
         setFormData({
           name: "",
@@ -162,8 +164,7 @@ export function LeadForm() {
         setSelectedServices([]);
         setSelectedPlan("consultation");
       } else {
-        const data = await response.json();
-        throw new Error(data.error || "Failed to submit form. Please verify Formspree ID or try again.");
+        throw new Error(data.message || "Submission failed. Please try again.");
       }
     } catch (err: any) {
       setSubmitStatus("error");
