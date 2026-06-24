@@ -54,8 +54,15 @@
 
     <!-- ══ Theme & Icons ════════════════════════════════════════════════════ -->
     <meta name="theme-color" content="#0e0c07" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
+    <!-- favicon.ico — legacy browsers & Google Search favicon fallback -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <!-- Sized PNGs — modern browsers (Chrome, Edge, Firefox) use these -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <!-- Apple Touch Icon — iOS home screen & Safari -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <!-- Web App Manifest — Android Chrome, PWA install, Microsoft -->
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- ══ Structured Data — Organization + LocalBusiness + Website ═════════ -->
     <script type="application/ld+json">
@@ -69,7 +76,7 @@
           "url": "https://www.vysaidigitalmedia.in/",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://www.vysaidigitalmedia.in/favicon.png",
+            "url": "https://www.vysaidigitalmedia.in/favicon-512x512.png",
             "width": 512,
             "height": 512
           },
